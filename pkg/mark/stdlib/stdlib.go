@@ -111,9 +111,6 @@ func templates(api *confluence.API) (*template.Template, error) {
 			`<ac:parameter ac:name="title">{{ .Title }}</ac:parameter>{{printf "\n"}}`,
 			`<ac:plain-text-body><![CDATA[{{ .Text | cdata }}]]></ac:plain-text-body>{{printf "\n"}}`,
 			`</ac:structured-macro>{{printf "\n"}}`,
-
-			`{{ if .Collapse }}</ac:rich-text-body>{{printf "\n"}}`,
-			`</ac:structured-macro>{{printf "\n"}}{{ end }}`,
 		),
 
 		`ac:status`: text(
