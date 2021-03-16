@@ -105,6 +105,7 @@ func templates(api *confluence.API) (*template.Template, error) {
 
 		// This template is used for rendering code in ```
 		`ac:code`: text(
+			`{{ if .Collapse }}<ac:structured-macro ac:name="expand">{{printf "\n"}}`,
 			`{{ if .Title }}<ac:parameter ac:name="title">{{ .Title }}</ac:parameter>{{printf "\n"}}{{ end }}`,
 			`<ac:rich-text-body>{{printf "\n"}}{{ end }}`,
 
@@ -116,6 +117,7 @@ func templates(api *confluence.API) (*template.Template, error) {
 			`</ac:structured-macro>{{printf "\n"}}`,
 
 			`{{ if .Collapse }}</ac:rich-text-body>{{printf "\n"}}`,
+			`</ac:structured-macro>{{printf "\n"}}{{ end }}`,
 		),
 
 		`ac:status`: text(
